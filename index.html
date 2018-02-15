@@ -1,0 +1,130 @@
+<!DOCTYPE>
+<html ng-app="workOut">
+<head>
+<!-- <link rel="stylesheet" href="./bootstrap/bootstrap-3.3.7-dist/css/bootswatch.css"> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<style type="text/css">
+  * {
+    font-family: 'Lato', sans-serif;
+  }
+  .container, .sidebar {
+    float: right;
+  }
+  .container {
+    width: 75%;
+  }
+  .sidebar {
+    width: 25%;
+  }
+  h1 {
+    font-weight: lighter;
+  }
+  h1 span {
+    font-weight: 800;
+  }
+  input {
+    border-radius: 10px;
+  }
+  th {
+    font-size: 18px;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script> -->
+<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+<script type="text/javascript" src="node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+  <script type="text/javascript" src="node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+<script src="/controller.js"></script>
+
+
+  <title>Todo List App</title>
+</head>
+<!-- <body > -->
+<body style="background-color:lightgrey;">
+  <div class="container" ng-controller="contr as up">
+    <h1 align="center"><img src="./image/check.png" alt="Get Busy" height="50" width="60">WORK<span>OUT</span>APP</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Workout</th>
+          <th>Day</th>
+        </tr>
+      </thead>
+      <tbody>
+        <td><input class="form-control" ng-model="listItem.item" placeholder="Let's do this"></td>
+        <td><input class="form-control" ng-model="listItem.dueDate" placeholder="Due Date"></td>
+      </tbody>
+    </table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Notes</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input class="form-control" ng-model="listItem.notes" placeholder="Anything else"></td>
+          <td><button class="btn btn-primary" ng-click="up.submit(); addItem()">Add to the List</button></td>
+          <td><button class="btn btn-info" ng-click="change()">Change</button></td>
+        </tr>
+        <tr ng-repeat="listItem in todolist">
+          <td>{{listItem.item}}</td>
+          <td>{{listItem.dueDate}}</td>
+          <td>{{listItem.notes}}</td>
+          <td><img style="width:150px;" ng-src="{{listItem.image}}"/></td>
+          <td><button class="btn btn-success" ng-click="remove(listItem._id)">Complete</button></td>
+          <td><button class="btn btn-warning" ng-click="edit(listItem._id)">Edit</button></td>
+        </tr>
+        <!-- class="btn btn-danger" -->
+
+      </tbody>
+    </table>
+    <center><h3 ng-if="!todolist.length">What Should We Do Today!?!</h3></center>
+    <!-- upload photos -->
+    <form   name="up.upload_form">
+        <input
+            type="file"
+            ngf-select
+            ng-model="up.file"
+            name="file"
+            id="file"
+            ngf-pattern="'image/*'"
+            accept="image/*"
+            ngf-max-size="20MB"
+            />
+
+        <img style="width:100px;" ng-show="!!up.file" ngf-thumbnail="up.file || '/thumb.jpg'"/>
+
+    </div>
+    </form>
+
+  </div>
+  <div class="sidebar">
+    <center><a href="" class="btn btn-info" ng-click="showme===true ? showme = false : showme = true">Music</a>
+
+    <button class="btn btn-info" ng-click="showtime===true ? showtime = false : showtime = true">Que tiempo
+
+    </button></center>
+
+    <div class="wrapper">
+      <center><p ng-hide="showme">Let's Kick Back and Listen to Tunes</p></center>
+      <p ng-show="showme">
+        <iframe width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/253267033&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+
+        <iframe width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/253201834&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+      </p>
+      <center><p ng-hide="showtime">What Time is it?</p></center>
+      <p ng-show="showtime">
+      <span class="wtb-ew-v1" style="width: 369px; display:block; margin: 0 auto"><script src="http://www.worldtimebuddy.com/clock_widget.js?h=0&bc=8BA1BB&cn=&wt=c2"></script><i><a href="http://www.worldtimebuddy.com/">World Clock</a></i><noscript><a href="http://www.worldtimebuddy.com/">World Clock</a></noscript><script>window[wtb_event_widgets.pop()].init()</script></span>
+      </p>
+    </div>
+  </div>
+
+
+</body>
+</html>
