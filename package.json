@@ -1,0 +1,27 @@
+{
+  "name": "meanUploader",
+  "version": "1.0.0",
+  "description": "meanUploaders",
+  "repository": "https://github.com/neekon91/nList",
+  "main": "./server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.14.1",
+    "express": "4.13.3",
+    "fs": "0.0.2",
+    "multer": "1.1.0",
+    "mongojs": "^0.18.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
