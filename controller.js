@@ -28,7 +28,7 @@ var workOut = angular.module('workOut', ['ngFileUpload'])
 
   this.upload = function (file) {
       Upload.upload({
-          url: 'http://localhost:5000/upload',
+          url: 'http://localhost:27017/upload',
           data:{file:file}
       })
   };
@@ -42,7 +42,7 @@ var workOut = angular.module('workOut', ['ngFileUpload'])
       item: $scope.listItem.item,
       dueDate: $scope.listItem.dueDate,
       notes: $scope.listItem.notes,
-      image: 'http://localhost:5000/uploads/'+$scope.findPicName()
+      image: 'http://localhost:27017/uploads/'+$scope.findPicName()
     }
 
     $http.post('/todolist', data).success(suc());

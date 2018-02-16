@@ -5,8 +5,10 @@ var app = express();
 var router = express.Router();
 var multer = require('multer');
 
-var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test');
 
 app.use(express.static(__dirname + '/../'));
 app.use(bodyParser.json());
@@ -38,9 +40,6 @@ app.post('/upload', function(request, response) {
 });
 
 app.use('/uploads',express.static(__dirname + '/uploads'));
-
-
-var db = mongojs('todolist', ['todolist']);
 
 app.get('/todolist', function (request, response) {
   db.todolist.find(function (error, doc) {
